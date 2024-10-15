@@ -37,7 +37,7 @@ public class Puzzle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.gameObject.CompareTag("Colecccionable")) { return; }
+        if (!collision.gameObject.CompareTag("Coleccionable")) { return; }
 
         GameObject nuevoColeccionable = collision.gameObject;
         nuevoColeccionable.SetActive(false);
