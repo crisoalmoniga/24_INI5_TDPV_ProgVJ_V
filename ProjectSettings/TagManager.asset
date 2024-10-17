@@ -40,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Fondo del fondo
+    uniqueID: 4018634243
+    locked: 0
   - name: Fondo
     uniqueID: 2444005575
     locked: 0
