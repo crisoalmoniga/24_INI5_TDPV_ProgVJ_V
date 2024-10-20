@@ -1,4 +1,4 @@
-ï»¿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -63,7 +63,7 @@ public class JefeFinal : MonoBehaviour
     {
         float tiempoEmbestida = 2f;
         float tiempoInicio = Time.time;
-        float velocidadEmbestida = -10f; // Ajusta la velocidad de la embestida segï¿½n tus necesidades
+        float velocidadEmbestida = -10f; // Ajusta la velocidad de la embestida según tus necesidades
 
         Vector2 posicionInicial = transform.position;
         Vector2 posicionObjetivo = new Vector2(transform.position.x + velocidadEmbestida, transform.position.y);
@@ -74,7 +74,7 @@ public class JefeFinal : MonoBehaviour
             transform.position = Vector2.Lerp(posicionInicial, posicionObjetivo, (Time.time - tiempoInicio) / (tiempoEmbestida / 2));
             yield return null;
         }
-        // Mover hacia atrï¿½s (retroceso)
+        // Mover hacia atrás (retroceso)
         tiempoInicio = Time.time;
         while (Time.time < tiempoInicio + tiempoEmbestida / 2)
         {
@@ -85,21 +85,21 @@ public class JefeFinal : MonoBehaviour
 
     private IEnumerator Movimiento()
     {
-        float tiempoMovimiento = 3f; // Ajusta la duraciï¿½n del movimiento segï¿½n tus necesidades
+        float tiempoMovimiento = 3f; // Ajusta la duración del movimiento según tus necesidades
         float tiempoInicio = Time.time;
         float velocidadMovimiento = 6f;
 
         Vector2 posicionInicial = transform.position;
         Vector2 posicionObjetivo = new Vector2(transform.position.x, transform.position.y + velocidadMovimiento);
 
-        // Mover hacia la posiciï¿½n objetivo
+        // Mover hacia la posición objetivo
         while (Time.time < tiempoInicio + tiempoMovimiento / 2)
         {
             transform.position = Vector2.Lerp(posicionInicial, posicionObjetivo, (Time.time - tiempoInicio) / (tiempoMovimiento / 2));
             yield return null;
         }
 
-        // Mover hacia la posiciï¿½n inicial
+        // Mover hacia la posición inicial
         tiempoInicio = Time.time;
         while (Time.time < tiempoInicio + tiempoMovimiento / 2)
         {
@@ -110,8 +110,8 @@ public class JefeFinal : MonoBehaviour
 
     private void ActualizarEstado()
     {
-        // Actualiza el estado actual segï¿½n las probabilidades y condiciones que desees
-        // Puedes usar Random.Range para generar nï¿½meros aleatorios y decidir el siguiente estado
+        // Actualiza el estado actual según las probabilidades y condiciones que desees
+        // Puedes usar Random.Range para generar números aleatorios y decidir el siguiente estado
         estadoActual = Random.Range(0, 3);
     }
 }

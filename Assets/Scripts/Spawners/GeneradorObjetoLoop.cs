@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class GeneradorObjetoLoop : MonoBehaviour
 {
-
     [SerializeField] private GameObject objetoPrefab;
 
     [SerializeField]
-    [Range((float)0.5, 5f)]
+    [Range(0.5f, 5f)]
     private float tiempoEspera;
 
     [SerializeField]
-    [Range((float)0.5, 5f)]
+    [Range(0.5f, 5f)]
     private float tiempoIntervalo;
 
-    private void Start()
+    void Start()
     {
         InvokeRepeating(nameof(GenerarObjetoLoop), tiempoEspera, tiempoIntervalo);
     }

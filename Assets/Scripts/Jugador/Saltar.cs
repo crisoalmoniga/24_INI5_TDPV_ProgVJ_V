@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class Saltar : MonoBehaviour
 {
-    // Variables a configurar desde el editor
-    [Header("Configuracion")]
-    [SerializeField] private float fuerzaSalto = 5f;
 
-    [SerializeField] private AudioClip jumpSFX;
-    [SerializeField] private AudioClip collisionSFX;
+    private Jugador jugador;
 
     // Variables de uso interno en el script
     private bool puedoSaltar = true;
@@ -19,14 +15,20 @@ public class Saltar : MonoBehaviour
     private Rigidbody2D miRigidbody2D;
     private AudioSource miAudioSource;
 
-    // Código ejecutado cuando el objeto se activa en el nivel
+    // Codigo ejecutado cuando el objeto se activa en el nivel
+    private void Awake()
+    {
+        jugador = GetComponent<Jugador>();
+    }
+
     private void OnEnable()
     {
         miRigidbody2D = GetComponent<Rigidbody2D>();
         miAudioSource = GetComponent<AudioSource>();
+        jugador = GetComponent<Jugador>();
     }
 
-    // Código ejecutado en cada frame del juego (Intervalo variable)
+    // Codigo ejecutado en cada frame del juego (Intervalo variable)
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && puedoSaltar)
@@ -34,7 +36,7 @@ public class Saltar : MonoBehaviour
             puedoSaltar = false;
 
             if (miAudioSource.isPlaying) { return; }
-            miAudioSource.PlayOneShot(jumpSFX);
+            miAudioSource.PlayOneShot(jugador.PerfilJugador.JumpSFX);
         }
     }
 
@@ -42,18 +44,19 @@ public class Saltar : MonoBehaviour
     {
         if (!puedoSaltar && !saltando)
         {
-            miRigidbody2D.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse);
+            miRigidbody2D.AddForce(Vector2.up * jugador.PerfilJugador.FuerzaSalto, ForceMode2D.Impulse);
             saltando = true;
         }
     }
 
-    // Código ejecutado cuando el jugador colisiona con otro objeto
+    // Codigo ejecutado cuando el jugador colisiona con otro objeto
     private void OnCollisionEnter2D(Collision2D collision)
     {
         puedoSaltar = true;
         saltando = false;
 
-        if (miAudioSource.isPlaying) { return; }
-        miAudioSource.PlayOneShot(collisionSFX);
+        if(miAudioSource.isPlaying) { return; }
+        miAudioSource.PlayOneShot(jugador.PerfilJugador.CollisionSFX);
     }
+
 }

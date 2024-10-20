@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class GeneradorObjeto : MonoBehaviour
 {
-
     [SerializeField] private GameObject objetoPrefab;
 
     [SerializeField]
-    [Range((float)0.5, 5f)]
+    [Range(0.5f,5f)]
     private float tiempoEspera;
 
-    private void Start()
+    void Start()
     {
         Invoke("GenerarObjeto", tiempoEspera);
     }

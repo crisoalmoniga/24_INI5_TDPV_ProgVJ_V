@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GeneradorObjetoAleatorio : MonoBehaviour
 {
-
     [SerializeField] private GameObject[] objetosPrefabs;
 
     [SerializeField]
@@ -15,9 +14,9 @@ public class GeneradorObjetoAleatorio : MonoBehaviour
     [Range(0.5f, 5f)]
     private float tiempoIntervalo;
 
-    private void Start()
+    void Start()
     {
-  //      InvokeRepeating(nameof(GeneradorObjetoAleatorio), tiempoEspera, tiempoIntervalo);
+        //InvokeRepeating(nameof(GenerarObjetoAleatorio), tiempoEspera, tiempoIntervalo);
     }
 
     void GenerarObjetoAleatorio()
@@ -32,10 +31,11 @@ public class GeneradorObjetoAleatorio : MonoBehaviour
         Debug.Log("El SpriteRenderer deja de ser visible por las cámaras en la escena");
         CancelInvoke(nameof(GenerarObjetoAleatorio));
     }
-    private void OnBecameVisible() 
+
+    private void OnBecameVisible()
     {
         Debug.Log("El SpriteRenderer es visible por las cámaras en la escena");
-        InvokeRepeating(nameof(GenerarObjetoAleatorio), tiempoEspera, tiempoIntervalo);  
+        InvokeRepeating(nameof(GenerarObjetoAleatorio), tiempoEspera, tiempoIntervalo);
     }
 
 }

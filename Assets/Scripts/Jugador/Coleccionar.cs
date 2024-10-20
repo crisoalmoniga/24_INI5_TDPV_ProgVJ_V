@@ -17,7 +17,7 @@ public class Coleccionar : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.gameObject.CompareTag("Coleccionable")) { return; }
-
+                
         GameObject nuevoColeccionable = collision.gameObject;
         nuevoColeccionable.SetActive(false);
 
@@ -33,8 +33,6 @@ public class Coleccionar : MonoBehaviour
 
             presionado = !presionado;
             coleccionables[0].SetActive(presionado);
-
         }
-
     }
 }

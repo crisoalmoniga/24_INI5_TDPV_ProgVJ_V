@@ -9,10 +9,12 @@ public class GeneradorDiaNoche : MonoBehaviour
     [SerializeField] private Color nocheColor;
     [SerializeField] private Light2D luz2D;
 
+
     [SerializeField][Range(1, 128)] private int duracionDia;
-    [SerializeField][Range(1, 128)] private int dias;
+    [SerializeField][Range(1, 24)] private int dias;
 
     private Color diaColor;
+
 
     void Start()
     {
@@ -29,7 +31,7 @@ public class GeneradorDiaNoche : MonoBehaviour
 
         for (int i = 0; i < dias; i++)
         {
-            yield return new WaitForSeconds(duracionCambio);
+            yield return new WaitForSeconds(duracionCiclo);
 
             float tiempoTranscurrido = 0;
 
@@ -39,15 +41,16 @@ public class GeneradorDiaNoche : MonoBehaviour
                 float t = tiempoTranscurrido / duracionCambio;
 
                 float smoothT = Mathf.SmoothStep(0f, 1f, t);
+
                 camara.backgroundColor = Color.Lerp(camara.backgroundColor, colorDestinoFondo, smoothT);
                 luz2D.color = Color.Lerp(luz2D.color, colorDestinoLuz, smoothT);
+
                 yield return null;
             }
 
-            colorDestinoLuz = camara.backgroundColor == diaColor ? nocheColor : diaColor;
+            colorDestinoLuz = luz2D.color != Color.white ? Color.white : nocheColor;
             colorDestinoFondo = camara.backgroundColor == diaColor ? nocheColor : diaColor;
 
         }
-
     }
 }
