@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JefeFinal : MonoBehaviour
+public class Jefefinal : MonoBehaviour
 {
     [SerializeField] float tiempoEntreDisparos;
     [SerializeField] float tiempoEntreEmbestidas;
